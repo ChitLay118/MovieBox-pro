@@ -1,200 +1,367 @@
-/* Custom CSS styles if needed, mainly for non-tailwind things or specific overrides */
+/* ============================================================================
+   WY MovieBox - Enhanced CSS Styles (v6.0)
+   Modernized UI with smooth animations and better responsive design
+   ============================================================================ */
 
-/* Hide scrollbar for category menu but allow scrolling */
-#menu-bar::-webkit-scrollbar {
+/* ============================================================================
+   1. SCROLLBAR STYLING
+   ============================================================================ */
+
+#menu-bar::-webkit-scrollbar,
+#noti-list::-webkit-scrollbar,
+#search-results::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+#menu-bar::-webkit-scrollbar-track,
+#noti-list::-webkit-scrollbar-track,
+#search-results::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#menu-bar::-webkit-scrollbar-thumb,
+#noti-list::-webkit-scrollbar-thumb,
+#search-results::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 3px;
+}
+
+#menu-bar::-webkit-scrollbar-thumb:hover,
+#noti-list::-webkit-scrollbar-thumb:hover,
+#search-results::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+#menu-bar,
+#noti-list,
+#search-results {
+    -ms-overflow-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: #475569 transparent;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
-#menu-bar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
 
-/* Base Dark Theme (Default) */
+/* ============================================================================
+   2. COLOR SCHEME (Dark Theme - Default)
+   ============================================================================ */
+
 .bg-darkbg {
-    background-color: #1A1A1A; 
+    background-color: #1A1A1A;
 }
+
 .bg-midbg {
-    background-color: #262626; 
+    background-color: #262626;
 }
+
 .text-primary {
-    color: #FFD700; 
+    color: #FFD700;
 }
 
-/* !!! FIX: Active Category Button - Blue Color */
+/* Primary color accent */
+.primary {
+    color: #FFD700;
+}
+
+/* ============================================================================
+   3. ACTIVE CATEGORY BUTTON STYLING
+   ============================================================================ */
+
 .active-category-blue {
-    background-color: #3B82F6 !important; /* Tailwind blue-500 */
+    background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%) !important;
     color: white !important;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4) !important;
+    font-weight: 600 !important;
 }
 
-/* Light Theme Classes (unchanged, but adjusted for new blue color if needed) */
+.active-category-blue:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6) !important;
+}
+
+/* ============================================================================
+   4. LIGHT THEME CLASSES
+   ============================================================================ */
+
 .light-mode .bg-darkbg {
-    background-color: #F8F8F8; 
+    background-color: #F8F8F8;
 }
+
 .light-mode .bg-midbg {
-    background-color: #FFFFFF; 
+    background-color: #FFFFFF;
 }
+
 .light-mode .text-white {
-    color: #1A1A1A; 
+    color: #1A1A1A;
 }
+
 .light-mode .text-primary {
-    color: #CC9900; 
+    color: #CC9900;
 }
+
 .light-mode .bg-gray-800 {
-    background-color: #E5E5E5 !important; 
+    background-color: #E5E5E5 !important;
     color: #1A1A1A !important;
 }
+
 .light-mode .bg-gray-800:hover {
     background-color: #CCCCCC !important;
 }
+
 .light-mode .nav-btn.text-gray-400 {
     color: #6B7280 !important;
 }
+
 .light-mode #header-sticky {
     border-color: #E5E5E5;
 }
+
 .light-mode .active-category-blue {
-    background-color: #1D4ED8 !important; /* Darker blue for light theme */
+    background: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%) !important;
     color: white !important;
 }
 
-/* Login Styles */
+.light-mode .animated-input {
+    background-color: #F3F4F6 !important;
+    border-color: #D1D5DB !important;
+    color: #1F2937 !important;
+}
+
+.light-mode .animated-input:focus {
+    box-shadow: 0 0 0 4px rgba(204, 153, 0, 0.2) !important;
+    border-color: #CC9900 !important;
+}
+
+.light-mode .login-button {
+    background-color: #CC9900 !important;
+}
+
+.light-mode .login-button:hover {
+    background-color: #B8860B !important;
+}
+
+/* ============================================================================
+   5. LOGIN SCREEN STYLING
+   ============================================================================ */
+
 .login-card {
-    animation: slideIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation: slideInDown 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     opacity: 0;
-    background: rgba(15, 23, 42, 0.8);
+    background: rgba(15, 23, 42, 0.85);
     border: 1px solid rgba(49, 57, 73, 0.3);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
 
-@keyframes slideIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animated Input Fields */
 .animated-input {
     transition: all 0.3s ease-in-out;
     background-color: #334155;
-    border-color: #475569;
+    border: 2px solid #475569;
     color: #e2e8f0;
 }
 
 .animated-input:focus {
-    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.5);
-    border-color: #22d3ee;
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.3);
+    border-color: #FFD700;
+    transform: translateY(-2px);
 }
 
+.animated-input::placeholder {
+    color: #94a3b8;
+}
+
+/* Login Button */
 .login-button {
-    transition: all 0.2s ease-in-out;
-    background-color: #06b6d4;
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.login-button:hover::before {
+    left: 100%;
 }
 
 .login-button:hover {
-    background-color: #0891b2;
-    transform: scale(1.02);
-    box-shadow: 0 10px 15px -3px rgba(6, 182, 212, 0.5), 0 4px 6px -2px rgba(6, 182, 212, 0.2);
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(6, 182, 212, 0.4);
 }
 
 .login-button:active {
-    transform: scale(0.97);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Admin Styles */
+/* ============================================================================
+   6. ADMIN PANEL STYLING
+   ============================================================================ */
+
 .admin-panel {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
 }
 
 .admin-section {
-    background: rgba(38, 38, 38, 0.8);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
+    background: rgba(38, 38, 38, 0.9);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.admin-section:hover {
+    border-color: rgba(255, 215, 0, 0.2);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.1);
 }
 
 .admin-input {
     background-color: #334155;
-    border: 1px solid #475569;
+    border: 2px solid #475569;
     color: white;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 12px 15px;
+    border-radius: 8px;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+.admin-input:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.admin-input::placeholder {
+    color: #94a3b8;
 }
 
 .admin-btn {
-    background-color: #3B82F6;
+    background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 24px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .admin-btn:hover {
-    background-color: #2563EB;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+}
+
+.admin-btn:active {
+    transform: scale(0.98);
 }
 
 .user-list {
-    max-height: 400px;
+    max-height: 500px;
     overflow-y: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .user-item {
-    padding: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.2s ease-in-out;
 }
 
-/* --- အသစ်ထပ်ပေါင်းထည့်လိုက်သော ကုဒ်များ (NEW STYLES) --- */
+.user-item:hover {
+    background-color: rgba(255, 215, 0, 0.05);
+}
 
-/* Notification Sidebar Animation */
+.user-item:last-child {
+    border-bottom: none;
+}
+
+/* ============================================================================
+   7. NOTIFICATION SIDEBAR ANIMATION
+   ============================================================================ */
+
 @keyframes slideLeft {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .animate-slide-left {
-    animation: slideLeft 0.3s ease-out;
-}
-
-/* Profile UI Modern Styles */
-.profile-gradient-card {
-    background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-}
-
-.setting-item-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    background-color: rgba(38, 38, 38, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 1.25rem;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-}
-
-.setting-item-card:hover {
-    background-color: rgba(55, 65, 81, 0.8);
-    transform: translateY(-1px);
+    animation: slideLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Notification Item Styling */
 .noti-item {
-    background-color: #333;
-    padding: 1rem;
-    border-radius: 1rem;
-    border-left: 4px solid #FFD700; /* primary gold color */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, rgba(38, 38, 38, 0.8) 0%, rgba(45, 45, 45, 0.8) 100%);
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 4px solid #FFD700;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.noti-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 6px 16px rgba(255, 215, 0, 0.2);
 }
 
 .noti-time {
@@ -202,4 +369,281 @@
     color: #888;
     margin-top: 0.5rem;
     display: block;
+}
+
+/* ============================================================================
+   8. PROFILE CARD STYLING
+   ============================================================================ */
+
+.profile-gradient-card {
+    background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+    box-shadow: 0 25px 50px rgba(59, 130, 246, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-gradient-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(20px, 20px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.setting-item-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: rgba(38, 38, 38, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.setting-item-card:hover {
+    background-color: rgba(55, 65, 81, 0.9);
+    border-color: rgba(255, 215, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================================
+   9. MOVIE CARD STYLING (Enhanced)
+   ============================================================================ */
+
+.movie-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    group: 'card';
+}
+
+.movie-card:hover {
+    transform: scale(1.08) translateY(-4px);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.movie-card:hover img {
+    transform: scale(1.1);
+}
+
+.movie-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+}
+
+.movie-card:hover .movie-card-overlay {
+    opacity: 1;
+}
+
+.movie-card-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.3;
+}
+
+/* ============================================================================
+   10. SEARCH MODAL STYLING
+   ============================================================================ */
+
+#search-modal {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#search-input {
+    transition: all 0.3s ease-in-out;
+}
+
+#search-input:focus {
+    border-color: #FFD700;
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+}
+
+.search-result-item {
+    padding: 12px;
+    background-color: rgba(38, 38, 38, 0.6);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-result-item:hover {
+    background-color: rgba(55, 65, 81, 0.8);
+    transform: translateX(4px);
+}
+
+.search-result-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* ============================================================================
+   11. RESPONSIVE DESIGN IMPROVEMENTS
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .login-card {
+        padding: 24px;
+    }
+
+    .admin-panel {
+        padding: 12px;
+    }
+
+    .admin-section {
+        padding: 16px;
+    }
+
+    #menu-bar {
+        gap: 8px;
+    }
+
+    .menu-btn {
+        padding: 8px 12px !important;
+        font-size: 0.75rem !important;
+    }
+
+    #player-container {
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+
+    #noti-modal .absolute {
+        width: 100% !important;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 1.75rem !important;
+    }
+
+    .menu-btn {
+        padding: 6px 10px !important;
+        font-size: 0.7rem !important;
+    }
+
+    #nav-bar {
+        height: 64px;
+    }
+
+    #nav-bar button {
+        gap: 2px;
+    }
+
+    #nav-bar .text-xs {
+        font-size: 0.6rem;
+    }
+}
+
+/* ============================================================================
+   12. UTILITY ANIMATIONS
+   ============================================================================ */
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* ============================================================================
+   13. TRANSITION UTILITIES
+   ============================================================================ */
+
+.transition-all {
+    transition: all 0.3s ease-in-out;
+}
+
+.transition-colors {
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.transition-transform {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* ============================================================================
+   14. CUSTOM SCROLLBAR FOR BETTER UX
+   ============================================================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
 }
